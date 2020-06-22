@@ -10,8 +10,6 @@ export default class Staff {
     }
 
     static isAdmin(username) {
-        console.log(Staff.#MODS);
-        console.log(Staff.#ADMINS);
         return username.toLowerCase().indexOf(Staff.#ADMINS) !== -1;
     }
 

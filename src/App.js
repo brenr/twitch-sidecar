@@ -6,7 +6,7 @@ import PlayQueue from "./impl/type/PlayQueue.js";
 
 const config = ConfigLoader.get();
 const tmiOpts = {
-    options: { debug: true },
+    options: { debug: false },
     connection: {
         secure: true,
         reconnect: true
@@ -41,7 +41,6 @@ client.on('message', (channel, context, message, self) => {
     const botCommand = new TwitchCommand(message);
     if(botCommand.parse()) {
         if(COMMANDS.has(botCommand.getCommand())) {
-            console.log(username);
             COMMANDS.get(botCommand.getCommand())(client, channel, username);
         }
     }

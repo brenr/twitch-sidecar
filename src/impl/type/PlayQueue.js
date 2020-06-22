@@ -25,7 +25,6 @@ export default class PlayQueue {
     static getQueue(client, channel, username) {
         if(Staff.isAdmin(username) || Staff.isMod(username)) {
             if(PlayQueue.#QUEUE.length > 0) {
-                console.log(PlayQueue.#QUEUE);
                 client.say(channel, "/me Current queue: " + PlayQueue.#QUEUE.join(', '));
             } else {
                 client.say(channel, PlayQueue.#NOBODY_IN_QUEUE_MESSAGE);
