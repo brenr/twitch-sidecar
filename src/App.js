@@ -1,8 +1,7 @@
-import ConfigLoader from "./impl/ConfigLoader.js";
 import tmi from 'tmi.js';
+import ConfigLoader from "./impl/ConfigLoader.js";
 import TwitchCommand from "./impl/TwitchCommand.js";
-import SocialCommand from "./command/SocialCommand.js";
-import PlayQueue from "./impl/type/PlayQueue.js";
+import CommandLoader from "./impl/CommandLoader.js";
 
 const config = ConfigLoader.get();
 const tmiOpts = {
@@ -23,15 +22,12 @@ const client = new tmi.client(tmiOpts);
 client.connect(); // Connect to Twitch
 
 // Register commands
-const COMMANDS = new Map();
-COMMANDS.set(config.commands.SOCIAL_MEDIA_COMMAND, SocialCommand.execute);
-COMMANDS.set(config.commands.JOIN_QUEUE_COMMAND, PlayQueue.join);
-COMMANDS.set(config.commands.NEXT_IN_QUEUE_COMMAND, PlayQueue.getNext);
-COMMANDS.set(config.commands.GET_QUEUE_COMMAND, PlayQueue.getQueue);
+const commands = new CommandLoader();
+commands.initialize();
 
 //
 client.on('message', (channel, context, message, self) => {
-    const username = context.username;
+
     // Ignore messages from the bot
     if(self) {
         return;
@@ -40,8 +36,8 @@ client.on('message', (channel, context, message, self) => {
     // Handle command
     const botCommand = new TwitchCommand(message);
     if(botCommand.parse()) {
-        if(COMMANDS.has(botCommand.getCommand())) {
-            COMMANDS.get(botCommand.getCommand())(client, channel, username);
+        if(commands.isValid(botCommand.getCommand())) {
+            commands.get(botCommand.getCommand())(client, channel, context);
         }
     }
 });
