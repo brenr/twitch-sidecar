@@ -2,10 +2,12 @@
   "name": "xpouches-twitch-bot",
   "version": "1.0.0",
   "description": "Twitch chat bot for xPouches",
-  "main": "app.js",
+  "main": "src/App.js",
   "scripts": {
+    "start": "node src/App.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/brenr/xpouches-twitch-bot.git"
@@ -21,6 +23,8 @@
   },
   "homepage": "https://github.com/brenr/xpouches-twitch-bot#readme",
   "dependencies": {
-    "tmi": "^2.0.0"
+    "fs": "0.0.1-security",
+    "ini": "^1.3.5",
+    "tmi.js": "^1.5.0"
   }
 }
