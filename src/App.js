@@ -1,7 +1,8 @@
 import tmi from 'tmi.js';
 import ConfigLoader from "./impl/ConfigLoader.js";
 import TwitchCommand from "./impl/TwitchCommand.js";
-import CommandLoader from "./impl/CommandLoader.js";
+import CommandHandler from "./impl/CommandHandler.js";
+import SocketServer from "./server/socketio/SocketServer.js";
 
 const config = ConfigLoader.get();
 const tmiOpts = {
@@ -22,8 +23,7 @@ const client = new tmi.client(tmiOpts);
 client.connect(); // Connect to Twitch
 
 // Register commands
-const commands = new CommandLoader();
-commands.initialize();
+CommandHandler.initialize();
 
 //
 client.on('message', (channel, context, message, self) => {
@@ -36,8 +36,11 @@ client.on('message', (channel, context, message, self) => {
     // Handle command
     const botCommand = new TwitchCommand(message);
     if(botCommand.parse()) {
-        if(commands.isValid(botCommand.getCommand())) {
-            commands.get(botCommand.getCommand())(client, channel, context);
+        if(CommandHandler.isValid(botCommand.getCommand())) {
+            CommandHandler.get(botCommand.getCommand())(client, channel, context);
         }
     }
 });
+
+// Express and socket servers for overlays
+SocketServer.initialize();
