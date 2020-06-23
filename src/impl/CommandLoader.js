@@ -17,11 +17,7 @@ export default class CommandLoader {
     }
 
     get(command) {
-        if(this.isValid()) {
-            return this.#COMMANDS.get(command);
-        } else {
-            return null;
-        }
+        return this.#COMMANDS.get(command);
     }
 
     isValid(command) {
