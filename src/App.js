@@ -25,7 +25,6 @@ client.connect(); // Connect to Twitch
 // Register commands
 CommandHandler.initialize();
 
-//
 client.on('message', (channel, context, message, self) => {
 
     // Ignore messages from the bot
@@ -38,6 +37,7 @@ client.on('message', (channel, context, message, self) => {
     if(botCommand.parse()) {
         if(CommandHandler.isValid(botCommand.getCommand())) {
             CommandHandler.get(botCommand.getCommand())(client, channel, context);
+
         }
     }
 });
