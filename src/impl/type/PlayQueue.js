@@ -1,4 +1,5 @@
 import TwitchUser from "../TwitchUser.js";
+import SocketServer from "../../server/socketio/SocketServer.js";
 
 export default class PlayQueue {
 
@@ -9,6 +10,7 @@ export default class PlayQueue {
         if(PlayQueue.#QUEUE.indexOf(context.username) === -1) {
             PlayQueue.#QUEUE.push(context.username);
             client.say(channel, "/me @" + context.username + " has been added to the queue.");
+            PlayQueueSocketHelper.pushData(PlayQueue.#QUEUE);
         }
     }
 
@@ -16,6 +18,7 @@ export default class PlayQueue {
         if(TwitchUser.isBroadcaster(context) || TwitchUser.isModerator(context)) {
             if(PlayQueue.#QUEUE.length > 0) {
                 client.say(channel, "/me @" + PlayQueue.#QUEUE.shift(context.username) + " it's your turn to play!");
+                PlayQueueSocketHelper.pushData(PlayQueue.#QUEUE);
             } else {
                 client.say(channel, PlayQueue.#NOBODY_IN_QUEUE_MESSAGE);
             }
@@ -26,10 +29,19 @@ export default class PlayQueue {
         if(TwitchUser.isBroadcaster(context) || TwitchUser.isModerator(context)) {
             if(PlayQueue.#QUEUE.length > 0) {
                 client.say(channel, "/me Current queue: " + PlayQueue.#QUEUE.join(', '));
+                PlayQueueSocketHelper.pushData(PlayQueue.#QUEUE);
             } else {
                 client.say(channel, PlayQueue.#NOBODY_IN_QUEUE_MESSAGE);
             }
         }
+    }
+
+}
+
+class PlayQueueSocketHelper {
+
+    static pushData(data) {
+        SocketServer.get().emit('PlayQueueData', data);
     }
 
 }

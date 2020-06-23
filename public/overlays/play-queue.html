@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PlayQueueOverlay</title>
+    <link rel="stylesheet" href="/css/overlay.css">
+    <link rel="stylesheet" href="/css/play-queue.css">
+</head>
+<body>
+    <div class="container">
+        <header>Play Queue</header>
+        <ul id="play-queue-list">
+        </ul>
+    </div>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io();
+    socket.on('PlayQueueData', updateView);
+
+    const MAX_ITEMS = 10;
+
+    function updateView(data) {
+        data = data.slice(0, MAX_ITEMS);
+        /**
+         * TO DO:
+         * - Implement more efficient system to compare diff of local cache with remote data
+         *   so that all child elements don't need to re-rendered unnecessarily.
+         * @type {Element}
+         */
+        const list = document.querySelector('#play-queue-list');
+        list.innerHTML = '';
+        data.forEach(item => {
+            let childElem = document.createElement('li');
+            let innerText = document.createTextNode(item);
+            childElem.appendChild(innerText);
+            list.appendChild(childElem);
+        });
+    }
+</script>
+</html>

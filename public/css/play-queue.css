@@ -1,0 +1,30 @@
+header {
+    padding: 10px;
+    font-weight: bold;
+    font-size: 120%;
+}
+
+ul {
+    list-style: none;
+    padding-inline-start: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+ul li {
+    line-height: 20px;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+ul li:first-child {
+    font-size: 125%;
+}
+
+ul li:first-child:after {
+    content: "UP NEXT";
+    font-weight: bold;
+    float: right;
+    font-size: 65%;
+    letter-spacing: 1pt;
+}
