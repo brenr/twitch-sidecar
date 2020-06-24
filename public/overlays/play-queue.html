@@ -18,10 +18,7 @@
     var socket = io();
     socket.on('PlayQueueData', updateView);
 
-    const MAX_ITEMS = 10;
-
     function updateView(data) {
-        data = data.slice(0, MAX_ITEMS);
         /**
          * TO DO:
          * - Implement more efficient system to compare diff of local cache with remote data
