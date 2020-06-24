@@ -15,6 +15,7 @@ export default class SocketServer {
         SocketServer.#app.use(express.static(__dirname + '/node_modules'));
         SocketServer.#app.use('/overlays', express.static(__dirname + '/public/overlays'));
         SocketServer.#app.use('/css', express.static(__dirname + '/public/css'));
+        SocketServer.#app.use('/images', express.static(__dirname + '/public/images'));
 
         SocketServer.#server.listen(ConfigLoader.get().runtime.HTTP_PORT);
 
