@@ -29,7 +29,7 @@ export default class PlayQueue {
     static getQueue(client, channel, context) {
         const topQueue = PlayQueue.#QUEUE.slice(0, ConfigLoader.get().overlays.PLAY_QUEUE_MAX_ITEMS).join(', ');
         const othersQty = Math.max(0, PlayQueue.#QUEUE.length - ConfigLoader.get().overlays.PLAY_QUEUE_MAX_ITEMS);
-        const othersText = othersQty > 0 ? " and " + othersQty + " other" + (othersQty > 1 ? "s" : "") + " in the queue." : "";
+        const othersText = othersQty > 0 ? " and " + othersQty + " other user" + (othersQty > 1 ? "s" : "") + "." : "";
 
         if(TwitchUser.isBroadcaster(context) || TwitchUser.isModerator(context)) {
             if(PlayQueue.#QUEUE.length > 0) {
