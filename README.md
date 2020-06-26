@@ -1,13 +1,9 @@
 # xpouches-twitch-bot
-<<<<<<< HEAD
 Twitch chat bot built in Node.js with socket-based CRUD system for stream overlays.
 
 #### Features
 * Basic commands
 * Play queue system
-=======
-Basic Twitch chat bot with support for simple commands, a play queue system and socket-based CRUD overlays.
->>>>>>> master
 
 #### Dependencies
 * [tmi.js](https://www.npmjs.com/package/tmi.js), a framework used for interfacing with the IRC-based Twitch chat system.
