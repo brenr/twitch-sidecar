@@ -1,5 +1,15 @@
-# xpouches-twitch-bot
+# twitch-sidecar
 Twitch chat bot built in Node.js with socket-based CRUD system for stream overlays.
+
+### Future tasks
+* General refactoring and abstraction
+* Overhaul command handler systems
+* Implement local db for data persistence.
+* Build abstract widget system
+* Control panel with interactive scene builder
+* *Premium-only* Cloud synchronization system to persist settings.
+* Integrate discord bot for synchronization of user roles, etc
+  * Would rebrand to encompass a more generalized livestreamer helper tool.
 
 #### Features
 * Basic commands
