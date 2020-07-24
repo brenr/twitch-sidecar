@@ -3,23 +3,23 @@ Current state: Twitch chat bot built in Node.js with socket-based CRUD system fo
 
 #### Future tasks
 * General refactoring and abstraction
-* Overhaul command handler systems
-* Implement local db for data persistence.
+* Overhaul command handler system
+* Implement local db for data persistence
 * Build abstract widget system
 * Control panel with interactive scene builder
-* *Premium-only* Cloud synchronization system to persist settings.
+* *Premium-only* Cloud synchronization system to persist settings
 * Integrate discord bot for synchronization of user roles, etc
 
-#### Features
+#### Current Preliminary Features
 * Basic commands
 * Play queue system
 
-#### Dependencies
+#### Libraries Used
 * [tmi.js](https://www.npmjs.com/package/tmi.js), a framework used for interfacing with the IRC-based Twitch chat system.
 * [express](https://www.npmjs.com/package/express), a web framework responsible for rendering overlay views.
 * [socket.io](https://www.npmjs.com/package/socket.io), a TCP socket framework used for realtime bidirectional data communication.
 
-#### Installation & Usage
+#### Installation & Setup
 1. Install git [here](https://git-scm.com/downloads).
 2. Install node.js [here](https://nodejs.org/en/download/).
 3. Clone the repository.
