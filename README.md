@@ -1,7 +1,7 @@
 # twitch-sidecar
-Twitch chat bot built in Node.js with socket-based CRUD system for stream overlays.
+Current state: Twitch chat bot built in Node.js with socket-based CRUD system for stream overlays.
 
-### Future tasks
+#### Future tasks
 * General refactoring and abstraction
 * Overhaul command handler systems
 * Implement local db for data persistence.
