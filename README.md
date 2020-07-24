@@ -9,7 +9,6 @@ Current state: Twitch chat bot built in Node.js with socket-based CRUD system fo
 * Control panel with interactive scene builder
 * *Premium-only* Cloud synchronization system to persist settings.
 * Integrate discord bot for synchronization of user roles, etc
-  * Would rebrand to encompass a more generalized livestreamer helper tool.
 
 #### Features
 * Basic commands
